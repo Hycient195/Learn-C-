@@ -2,12 +2,21 @@
 
 public class RandomNumbers
 {
-    public static void RandomPractice()
+    public static void Entrypoint()
     {
-        RandomNumber();
-        RandomByteArray();
-        RandomPasswordGenerator(15);
+        /* Practice */
+        //RandomNumber();
+        //RandomByteArray();
+        //RandomPasswordGenerator(15);
+
+        /* Exercises */
+        //Exercise1();
+        //Exercise2();
+        //Exercise3(5);
+        //Exercise4();
+        //Exercise5();
     }
+
     /* Generating a random number */
     public static void RandomNumber()
     {
@@ -42,19 +51,6 @@ public class RandomNumbers
         }
         string result = new string(passwordBuffer);
         Console.WriteLine(result);
-    }
-
-
-    /* ==================================== */
-    /* Entry Point for all exercises */
-    /* ==================================== */
-    public static void RandomExercises()
-    {
-        //Exercise1();
-        //Exercise2();
-        //Exercise3(5);
-        //Exercise4();
-        Exercise5();
     }
 
     /* A program that counts how many numbers between 0 to 100 are divisible by 3 */
@@ -106,7 +102,7 @@ public class RandomNumbers
         Random randomizer = new Random();
         int randnum = randomizer.Next(1, 10);
         int trials = 4;
-        Console.WriteLine("Enter mystery number");
+        Console.WriteLine("Enter mystery number. You have only 4 trials");
         Console.WriteLine(randnum);
         for (int i = 0; i < trials; i++)
         {
@@ -114,17 +110,14 @@ public class RandomNumbers
             if (input == randnum)
             {
                 Console.WriteLine("You won");
-                break;
+                return;
             }
-            else
-                if (i == (trials - 1))
-                    Console.WriteLine("You lost!");
-                else
-                    Console.WriteLine("Try again");
+            Console.WriteLine("Try again");
         }
+        Console.WriteLine("You lost!");
     }
 
-    /* Program that finds the maximum number from a string of comma separated values */
+    /* Program that finds the maximum number from a string of comma separated numbers */
     public static void Exercise5()
     {
         Console.WriteLine("Exercise 5");
@@ -132,17 +125,13 @@ public class RandomNumbers
         string input = Console.ReadLine();
         var stringArr = input.Split(',');
         int[] numArr = new int[stringArr.Length];
-        for (int i = 0; i < stringArr.Length; i++)
-        {
-            numArr[i] = int.Parse(stringArr[i]);
-        }
 
-        int maxNum = numArr[0];
+        int maxNum = Convert.ToInt32(numArr[0]);
 
-        for (int i = 0; i < numArr.Length; i++)
+        foreach (string letter in stringArr)
         {
-            if (numArr[i] > maxNum)
-                maxNum = numArr[i];
+            if (Convert.ToInt32(letter) > maxNum)
+                maxNum = Convert.ToInt32(letter);
         }
 
         Console.WriteLine("The maximum number is {0}", maxNum);

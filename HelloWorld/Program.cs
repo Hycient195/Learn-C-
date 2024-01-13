@@ -82,9 +82,14 @@ Console.WriteLine(applicationStatus);
 //Exercise_1.Question3();
 
 
-//Loops.ForLoops();
+/* Working with loops */
+Loops.Entrypoint();
 
 
 /* Working With Random Number Generators */
-RandomNumbers.RandomPractice(); // Practice Entrypoint
-RandomNumbers.RandomExercises(); // Exercise Entrypoint
+RandomNumbers.Entrypoint(); // Practice Entrypoint
+
+
+/* Working with arrays and lists */
+ArrayTypes.Entrypoint();
+ListType.Entrypoint();
