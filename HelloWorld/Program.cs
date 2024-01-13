@@ -61,21 +61,30 @@ Console.WriteLine(fullName);
 /* ===== */
 
 //Working with Enums
-Console.WriteLine(ColorStatus.UnderInvestigation);
+Console.WriteLine(ApplicationStatus.UnderInvestigation);
 
 //Typecasting Integers to Enums
-Console.WriteLine((int)ColorStatus.Pending);
+Console.WriteLine((int)ApplicationStatus.Pending);
 
 //Typecasting Enums to Integers
 var num = 3;
-Console.WriteLine((ColorStatus)num);
+Console.WriteLine((ApplicationStatus)num);
 
 //Parsing and typecasting strings to Enums
 string status = "Rejected";
-var applicationStatus = (ColorStatus)Enum.Parse(typeof(ColorStatus), status);
+var applicationStatus = (ApplicationStatus)Enum.Parse(typeof(ApplicationStatus), status);
 Console.WriteLine(applicationStatus);
 
-//Exercise Set 1
+
+/* Exercise Set 1 Uncomment to trigger questions */
 //Exercise_1.Question1();
 //Exercise_1.Question2();
-Exercise_1.Question3();
+//Exercise_1.Question3();
+
+
+//Loops.ForLoops();
+
+
+/* Working With Random Number Generators */
+RandomNumbers.RandomPractice(); // Practice Entrypoint
+RandomNumbers.RandomExercises(); // Exercise Entrypoint

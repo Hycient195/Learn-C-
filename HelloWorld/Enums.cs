@@ -22,7 +22,7 @@
  * with the use of a certain predefined enumeration (enum)
 */
 
-public enum ColorStatus
+public enum ApplicationStatus
 {
     Rejected = 1,
     Accepted = 2,
