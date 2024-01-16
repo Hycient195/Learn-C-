@@ -93,3 +93,14 @@ RandomNumbers.Entrypoint(); // Practice Entrypoint
 /* Working with arrays and lists */
 ArrayTypes.Entrypoint();
 ListType.Entrypoint();
+
+
+/* Working With Date and Time */
+DateTimeType.EntryPoint();
+
+
+/* Working with strings */
+StringType.EntryPoint();
+
+/* Working with files */
+FileOps.EntryPoint();
