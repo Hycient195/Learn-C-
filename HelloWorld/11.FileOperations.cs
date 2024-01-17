@@ -1,0 +1,147 @@
+﻿
+public class FileOps
+{
+    public static void EntryPoint()
+    {
+        //StaticFileMethods();
+        //InstanceFileMethods();
+
+        /* Exercises */
+        //Exercise1();
+        Exercise2();
+    }
+
+    public static void StaticFileMethods()
+    {
+        /* There are two broad ways of working with files in C# which are with the
+         * use of the "File" and "FileInfo" classes. These classes offer similary
+         * functionalities. The major difference is that "File" class makes use of
+         * static class methods, while the "FileInfo" class makes use of instance
+         * methods, meaning that you need to create an instance of the file you want
+         * to work with, before you can then carry out your operations.
+         * 
+         *  It is also good to note that since the "File" class makes use of static
+         * methods, every time a method or property from it is used, permission
+         * checks on the file in use would have to be carried out, which is relatively
+         * less efficient, if a large number of operations are to be carried out.
+         * 
+         *  On the other hand, the "FileInfo" class only performs permission checks
+         * once of the file instance created, and is more efficient for performing
+         * larger number of operations on a file.
+         * 
+         *  The static methods and properties from the "File" class is best for 
+         * one off operations, while the instance methods and properties from the
+         * "FileInfo" class is better for larger number of operations.
+        */
+
+        Console.WriteLine("File Operations");
+        const string sourcePath = @"../../../05.Loops.cs";
+        const string destPath = @"../../../copy-demo.txt";
+
+
+        /* ================================== */
+        /* Creating and writing to a new file */
+        /* ================================== */
+
+        var newFilePath = @"../../../Newfile.txt";
+
+        if (!File.Exists(newFilePath))
+            File.Create("../../../NewFile.txt");
+        StreamWriter newWriteFile = File.AppendText(newFilePath);
+        newWriteFile.WriteLine("This content Was then added to the new file");
+        newWriteFile.Close();
+
+
+        /* ================================== */
+        /* Reads text from the specified file */
+        /* ================================== */
+        var fileText = File.ReadAllText(destPath); // Reads all the text content in the file.
+        Console.WriteLine(fileText);
+
+
+        /* ============================================================================= */
+        /* Copying from one file to another (even if the destination file doesn't exist) */
+        /* ============================================================================= */
+        File.Copy(sourcePath, destPath, true); // With the third boolean argument, you can overwrite the file, if it already exists;
+
+
+        /* ==================== */
+        /* Check if file exists */
+        /* ==================== */
+        if (File.Exists(sourcePath))
+            Console.WriteLine("Source file exists");
+
+
+        /* ======================= */
+        /* Writes string to a file */
+        /* ======================= */
+        //var fileInstance = File.CreateText(destPath); // The "File.AppendText()" method can be used if you want to append text instead of create a new text in file
+        //fileInstance.WriteLine("This was then added to the file");
+        //fileInstance.Close();
+
+
+        /* ======================== */
+        /* Deleting of created file */
+        /* ======================== */
+        //File.Delete(newFilePath); // Delete the file created
+    }
+
+    public static void InstanceFileMethods()
+    {
+        const string source = @"../../../11.FileOperations.cs";
+        const string dest = @"../../../destSrc.txt";
+        const string newFileDest = @"../../../copyInstFile.txt";
+
+        /* Creating a file */
+        FileInfo newFileInstance = new FileInfo(newFileDest);
+        newFileInstance.Create();
+
+
+        /* Copying */
+        var sourceInstance = new FileInfo(source);
+        sourceInstance.CopyTo(dest, true); // The boolean argument is used for file overwriting;
+
+
+        /* Checking if it exists */
+        Console.WriteLine("Does wource Instance exist?: " + sourceInstance.Exists);
+
+
+        /* Appending content to a file */
+        var destInstance = new FileInfo(dest);
+        var writer = destInstance.AppendText();
+        writer.WriteLine("This was then appended manually");
+        writer.Close();
+
+
+        /* Deleting */
+        //destInstance.Delete();
+    }
+
+    /// <summary>
+    /// Write a program that reads a text file and displays the number of words.
+    /// </summary>
+    public static void Exercise1()
+    {
+        const string filePath = "../../../destSrc.txt";
+        string[] fileText = File.ReadAllText(filePath).Split(" ");
+
+        Console.WriteLine(fileText.Length);
+    }
+
+    /// <summary>
+    /// Write a program that reads a text file and displays the longest word in the file.
+    /// </summary>
+    public static void Exercise2()
+    {
+        const string filePath = "../../../copy-demo.txt";
+        string[] fileText = File.ReadAllText(filePath).Split(new[] {'.',' ', '(', ')', '{', '}'});
+
+        string longestWord = fileText[0];
+
+        foreach (var word in fileText)
+            if (word.Length > longestWord.Length)
+                longestWord = word;
+
+        Console.WriteLine(longestWord);
+    }
+}

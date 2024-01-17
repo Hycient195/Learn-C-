@@ -20,7 +20,7 @@
         // This kind of loop is used on iterables like array and list
         var numbers = new[] { 1, 2, 3, 4, 5 };
         foreach (var number in numbers)
-            Console.Write(number + " ");
+            Console.WriteLine(number + " ");
     }
 
     public static void WhileLoop()

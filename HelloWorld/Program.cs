@@ -102,5 +102,14 @@ DateTimeType.EntryPoint();
 /* Working with strings */
 StringType.EntryPoint();
 
+
 /* Working with files */
 FileOps.EntryPoint();
+
+
+/* Working with folders */
+FolderOperations.Entrypoint();
+
+
+/* Working with pathnames */
+FilePath.Entrypoint();
