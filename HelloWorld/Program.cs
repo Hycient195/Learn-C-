@@ -1,4 +1,6 @@
-﻿using HelloWorld;
+﻿using System.Text;
+using System.Text.RegularExpressions;
+using HelloWorld;
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
@@ -113,3 +115,111 @@ FolderOperations.Entrypoint();
 
 /* Working with pathnames */
 FilePath.Entrypoint();
+
+
+/* Class Basics */
+var person2 = new Person();
+person2.FirstName = "James";
+person2.LastName = "Lemon";
+
+var people = new List<Person>();
+people.Add(person2);
+
+// This syntax of instantiating and initializing a class is "Object Initialization" syntax
+Animal animal = new Animal
+{
+    Name = "Bull",
+    Age = 88,
+    Researchers = people
+};
+
+
+/* Working with Method Modifiers */
+//MethodModifiers.EntryPoint();
+
+
+/* Working with properties */
+var book = new Book();
+book.SetName("Judge of the jungle");
+Console.WriteLine(book.GetName());
+
+
+/* Working with properties and access modifiers */
+var storybook = new StoryBook("Folktakes by nighttime", new DateTime(2005, 12, 3));
+Console.WriteLine(storybook.AgeOfBook);
+
+
+/* Working with class Indexers */
+var cookie = new HttpCookie();
+cookie["user"] = "John Brown";
+cookie["jwt"] = "eyvwoaisjfaoisdfj";
+cookie.Expiry = DateTime.Now.AddDays(3);
+Console.WriteLine(cookie.Expiry);
+
+
+/* Exercises on Classes */
+//ClassBasicsAndEncapsulationExercises.Entrypoint();
+
+
+/* Console Calculator Application */
+static void ConsoleCalculator()
+{
+    Console.WriteLine("Enter the operations to perform: ");
+    StringBuilder input = new StringBuilder(Console.ReadLine());
+    var operands = new List<string>(input.ToString().Split(new[] { '+', '-', '*', '/' }));
+    var operators = new List<string>(Regex.Split(input.ToString(), @"\d+")).FindAll(x => x != "");
+
+    for (var i = 0; i < operators.Count; i++)
+    {
+        Console.WriteLine();
+        while (operators.IndexOf("/") != -1)
+        {
+            var subres = Convert.ToInt32(operands[operators.IndexOf("/")]) / Convert.ToInt32(operands[operators.IndexOf("/") + 1]);
+            Console.WriteLine("intermidiate value: " + input);
+            input.Replace($"{operands[operators.IndexOf("/")]}/{operands[operators.IndexOf("/") + 1]}", subres.ToString());
+            operands = new List<string>(input.ToString().Split(new[] { '+', '-', '*', '/' }));
+            operators = new List<string>(Regex.Split(input.ToString(), @"\d+")).FindAll(x => x != "");
+        }
+        while (input.ToString().IndexOf("*") != -1)
+        {
+            var subres = Convert.ToInt32(operands[operators.IndexOf("*")]) * Convert.ToInt32(operands[operators.IndexOf("*") + 1]);
+            Console.WriteLine("intermidiate value: " + input);
+            input.Replace($"{operands[operators.IndexOf("*")]}*{operands[operators.IndexOf("*") + 1]}", subres.ToString());
+            operands = new List<string>(input.ToString().Split(new[] { '+', '-', '*', '/' }));
+            operators = new List<string>(Regex.Split(input.ToString(), @"\d+")).FindAll(x => x != "");
+        }
+        while (operators.IndexOf("+") != -1)
+        {
+            var subres = Convert.ToInt32(operands[operators.IndexOf("+")]) + Convert.ToInt32(operands[operators.IndexOf("+") + 1]);
+            Console.WriteLine("intermidiate value: " + input);
+            input.Replace($"{operands[operators.IndexOf("+")]}+{operands[operators.IndexOf("+") + 1]}", subres.ToString());
+            operands = new List<string>(input.ToString().Split(new[] { '+', '-', '*', '/' }));
+            operators = new List<string>(Regex.Split(input.ToString(), @"\d+")).FindAll(x => x != "");
+        }
+        while (operators.IndexOf("-") != -1)
+        {
+            var subres = Convert.ToInt32(operands[operators.IndexOf("-")]) - Convert.ToInt32(operands[operators.IndexOf("-") + 1]);
+            Console.WriteLine("intermidiate value: " + input);
+            input.Replace($"{operands[operators.IndexOf("-")]}-{operands[operators.IndexOf("-") + 1]}", subres.ToString());
+            operands = new List<string>(input.ToString().Split(new[] { '+', '-', '*', '/' }));
+            operators = new List<string>(Regex.Split(input.ToString(), @"\d+")).FindAll(x => x != "");
+        }
+        
+    }
+    Console.WriteLine($"result is {input}");
+}
+
+//UpAndDownCasting.EntryPoint();
+
+
+/* Stack Exercise */
+MyStack stack = new MyStack();
+stack.Push(1);
+stack.Push("Hello");
+stack.Push(false);
+
+Console.WriteLine(stack.Pop());
+Console.WriteLine(stack.Pop());
+Console.WriteLine(stack.Pop());
+
+stack.Clear();
