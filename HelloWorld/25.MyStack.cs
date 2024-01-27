@@ -2,29 +2,24 @@
 
 public class MyStack
 {
-    private ArrayList _internalMemory = new ArrayList();
+    private readonly ArrayList _internalMemory = new ArrayList();
 
     public void Push(object arg)
     {
-        if (arg != null)
-            _internalMemory.Add(arg);
-        else
+        if (arg == null)
             throw new InvalidOperationException("Unable to add null value to stack");
+
+        _internalMemory.Add(arg); 
     }
 
     public object Pop()
     {
-        if (_internalMemory.Count != 0)
-        {
-            var returnValue = _internalMemory[_internalMemory.Count - 1];
-            _internalMemory.RemoveAt(_internalMemory.Count - 1);
-
-            return returnValue;
-        }
-        else
-        {
+        if (_internalMemory.Count == 0)
             throw new InvalidOperationException("Unable to item from an empty stack");
-        }
+
+        var returnValue = _internalMemory[_internalMemory.Count - 1];
+        _internalMemory.RemoveAt(_internalMemory.Count - 1);
+        return returnValue;
     }
 
     public void Clear() 

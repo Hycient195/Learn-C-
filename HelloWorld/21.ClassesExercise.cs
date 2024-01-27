@@ -67,7 +67,7 @@
 
 public class Stopwatch
 {
-    private bool _isStopwatchRunning = false;
+    private bool _isStopwatchRunning;
     private DateTime _startTime;
     private DateTime _stopTime;
 
@@ -78,32 +78,22 @@ public class Stopwatch
 
     public void Start()
     {
-        if (!_isStopwatchRunning)
-        {
-            _isStopwatchRunning = true;
-            _startTime = DateTime.Now;
-            Console.WriteLine("Stopwatch started...");
-        }
-        else
-        {
-            Console.WriteLine("Stopwatch is already running");
-            throw new InvalidOperationException("Stopwatch");
-        }
+        if (_isStopwatchRunning)
+            throw new InvalidOperationException("Stopwatch is already running");
+
+        _isStopwatchRunning = true;
+        _startTime = DateTime.Now;
+        Console.WriteLine("Stopwatch started...");
     }
 
     public void Stop()
     {
-        if (_isStopwatchRunning)
-        {
-            _isStopwatchRunning = false;
-            _stopTime = DateTime.Now;
-            Console.WriteLine("Stopwatch stopped");
-        }
-        else
-        {
-            Console.WriteLine("Stopwatch is already stopped");
-            throw new InvalidOperationException("Stopwatch");
-        }
+        if (!_isStopwatchRunning)
+            throw new InvalidOperationException("Stopwatch is already stopped");
+
+        _isStopwatchRunning = false;
+        _stopTime = DateTime.Now;
+        Console.WriteLine("Stopwatch stopped");
     }
 }
 

@@ -223,3 +223,37 @@ Console.WriteLine(stack.Pop());
 Console.WriteLine(stack.Pop());
 
 stack.Clear();
+
+
+/* DB Connection & DB Command Exercise (Exercises on Polymorphism) */
+// Upcasting;
+DBConnection sqlConnection = new OracleConnection("http://192.168.1.0:12701");
+
+DBCommand dbCommand = new DBCommand(sqlConnection, "GET PRODUCTS WHERE NAME IS DELLU4919DW");
+dbCommand.Execute();
+
+
+/* Entrypoint to Workflow Engine Exercise */
+WorkflowEntrypoint.Entrypoint();
+
+
+/* ====================== */
+/* Working with delegates */
+/* ====================== */
+NumberCalculator numberCalculator = new NumberCalculator();
+
+// To use a delegate, create variable with the delegate as type, and assign it to a method that has the same signature with the delegate;
+NumberCalculator.NumberCalculatorDelegate operatonDelegate = numberCalculator.Add;
+
+// You can further append other methods with the same signature, that would be invoked when the delegate is executed;
+operatonDelegate += numberCalculator.Subtract;
+operatonDelegate += numberCalculator.Divide;
+
+// You can even further create other methods on the fly and append it to the variable with the delegate type.
+void Multiply(int a, int b)
+{
+    Console.WriteLine("Product is: " + (a * b));
+}
+operatonDelegate += Multiply; // Adding a user defined method to the delegate chain of methods.
+
+operatonDelegate(9,3); // You can then execute the delegate with its argument (if any specified) and all the assiciated methods would execute together
