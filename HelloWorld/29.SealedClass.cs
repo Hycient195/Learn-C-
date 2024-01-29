@@ -38,6 +38,9 @@ namespace HelloWorld
    with the "override" keyword, as child methods or properties that do not override parent class
    methods or properties are already sealed by default and cannot be overriden.
 
+   It is used with the "override" keyword to override a base implementation, without allowing
+   itself to be overriden by a chid class derivative.
+
    Using the "sealed" keyword has some slightly performance improvement
    when being used, though this performance boost is negligible.
 */

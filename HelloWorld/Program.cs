@@ -257,3 +257,67 @@ void Multiply(int a, int b)
 operatonDelegate += Multiply; // Adding a user defined method to the delegate chain of methods.
 
 operatonDelegate(9,3); // You can then execute the delegate with its argument (if any specified) and all the assiciated methods would execute together
+
+
+
+/* =============================== */
+/* Working With Lambda Expressions */
+/* =============================== */
+LambdaExpression.EntryPoint();
+
+
+/* ================================ */
+/* Working with Event and Delegates */
+/* ================================ */
+var video = new Video() { Name = "Coming to America" };
+var encoder = new VideoEncoder();
+
+MailingService mailingService = new MailingService();
+TextMessageService textMessageService = new TextMessageService();
+
+// Subscribing to events
+encoder.VideoEncoded += mailingService.OnVideoEncoded;
+encoder.VideoEncoded += textMessageService.OnVideoEncoded;
+
+encoder.Encode(video);
+
+// Unsubscribing from events
+encoder.VideoEncoded -= mailingService.OnVideoEncoded;
+
+
+/* ============================================== */
+/* Working With Events and the Event Handler Type */
+/* ============================================== */
+var file = new MyFile("C://documents");
+var fileCompressor = new FileCompressor();
+
+var telexService = new TelexService();
+var phoneService = new PhoneCallService();
+
+fileCompressor.FileCompressed += telexService.OnFileCompressed;
+fileCompressor.FileCompressed += phoneService.OnFileCompressed;
+
+fileCompressor.FileCompressed += (sender, e) =>
+{
+    Console.WriteLine("Using Lambda Expression with events");
+};
+
+fileCompressor.Compress(file);
+
+
+
+/* ============================== */
+/* Working With Extension Methods */
+/* ============================== */
+string longWord = "A quick brown fox jumps over the lazy dog";
+Console.WriteLine(longWord.Truncate(6)); // The "Truncate" method is an extension method, and originally does not exist on the string class.
+
+int digit = 45;
+digit.Power(); // Extension method added to the int type
+
+
+
+/* ================= */
+/* Working With LINQ */
+/* ================= */
+LINQ.EntryPoint();
