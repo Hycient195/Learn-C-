@@ -328,3 +328,17 @@ LINQ.EntryPoint();
 /* Working With Nullable Types */
 /* =========================== */
 NullableTypes.EntryPoint();
+
+
+
+/* ========================== */
+/* Working With Dynamic Types */
+/* ========================== */
+DynamicType.Entrypoint();
+
+
+
+/* =============================== */
+/* Working With Exception Handling */
+/* =============================== */
+ExceptionHandling.Entrypoint();

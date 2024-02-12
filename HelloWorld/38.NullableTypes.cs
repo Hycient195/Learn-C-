@@ -38,3 +38,7 @@ namespace HelloWorld
 	}
 }
 
+/* A nullable type is a type that can be assigned a value or set to "null". Nullable types are
+ * commonly used on value types to represent the abscence of a value, since by default, value
+   types must have a value.
+	 Nullable types simply allows you to assign a value to its type or otherwise assign "null".*/
