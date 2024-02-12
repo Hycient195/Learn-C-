@@ -62,7 +62,7 @@ namespace HelloWorld
                 Console.WriteLine("Cheap weapon with price: " + price);
 
 			// Selecting a particular property from an Enumberable
-			var selectedWeapons = arsenal.Select(x => x.Name);
+			var selectedWeapons = arsenal.Select(x => x.Name); // Can be used like Javascript's forEach method
 			foreach (var weapon in selectedWeapons)
 				Console.WriteLine("Only weapon name selected: " + weapon);
 
@@ -74,7 +74,7 @@ namespace HelloWorld
 			// Skipping and taking on a Enumerable
             var skippedWeapons = arsenal.Skip(2).Take(3);
             foreach (var weapon in skippedWeapons)
-                Console.WriteLine("Two weapons skopped: " + weapon.Name);
+                Console.WriteLine("Two weapons skipped: " + weapon.Name);
 
 
 
@@ -100,10 +100,11 @@ namespace HelloWorld
 	}
 }
 
-/* LINQ, an acronym for Langauge Integrated Query in C# is a feature that provides a mechanish
+/* LINQ, an acronym for Langauge Integrated Query in C# is a feature that provides a mechanism
  * for querying and maniuplating data from different sources in C# sucy as Enumerables,
  * databases, XML and collections. 
  
 	LINQ in C# has two basic formats or expressions which are the "Query Expressions" and the
    "Lambda Expressions". The query expression takes the form of SQL statements, while the
-   Lambda expressions take the form of C# lambda expressions. */
+   Lambda expressions take the form of C# lambda expressions. The lambda expressions are more
+   feature rich. */

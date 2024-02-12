@@ -321,3 +321,10 @@ digit.Power(); // Extension method added to the int type
 /* Working With LINQ */
 /* ================= */
 LINQ.EntryPoint();
+
+
+
+/* =========================== */
+/* Working With Nullable Types */
+/* =========================== */
+NullableTypes.EntryPoint();
